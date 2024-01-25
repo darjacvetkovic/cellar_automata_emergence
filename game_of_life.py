@@ -8,10 +8,10 @@ import matplotlib.animation as animation
 
 # Constants of the model
 SEED = 1234
-SPACE_LENGTH = 100
-DENSITY = 0.66
+SPACE_LENGTH = 20
+DENSITY = 0.5
 TIME_STEPS = 100
-ANIMATION_INTERVAL = 100
+ANIMATION_INTERVAL = 200
 
 # Set random seed
 random.seed(SEED)
@@ -51,7 +51,7 @@ def update(frame):
     wrapsys = np.tile(system, [3,3])[SPACE_LENGTH-1:2*SPACE_LENGTH+1, SPACE_LENGTH-1:2*SPACE_LENGTH+1] # Create a wrapped system for the edges
     for i in range(SPACE_LENGTH):
         for j in range(SPACE_LENGTH):
-            new_system[i, j] = survive(wrapsys[i:i+2, j:j+2])
+            new_system[i, j] = survive(wrapsys[i:i+3, j:j+3])
     system = new_system
     im.set_data(system)
     frame_text.set_text('Frame: {} out of {}'.format(frame+1, TIME_STEPS))  # Update the text label
