@@ -45,7 +45,6 @@ def survive(array: np.array) -> int:
 # Define update function to be able to do an animation
 def update(frame):
     global system
-    random.seed(SEED+frame)
     save_array[frame, :, :] = system
     new_system = copy.deepcopy(system) # create a copy of the system for synchronous iterations
     wrapsys = np.tile(system, [3,3])[SPACE_LENGTH-1:2*SPACE_LENGTH+1, SPACE_LENGTH-1:2*SPACE_LENGTH+1] # Create a wrapped system for the edges
